@@ -1,3 +1,5 @@
+[![English](https://img.shields.io/badge/English-README-2ea44f?style=for-the-badge)](README.md) [![简体中文](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-README-6e7681?style=for-the-badge)](README.zh.md)
+
 # dsh-coding-plan-quota
 
 A **quota ring** that sits immediately to the **left of the model selector** in the DSH composer
@@ -272,7 +274,8 @@ dsh-coding-plan-quota/
 │   └── client.js         browser half — the ring, the hover card and the source picker
 ├── scripts/
 │   └── verify.mjs        75-assertion end-to-end check
-└── README.md
+├── README.md
+└── README.zh.md
 ```
 
 `lib/host.js` is the package `main`. It uses `node:http` / `node:https` and reads files, so it cannot

@@ -38,7 +38,8 @@
     "lib",
     "scripts",
     "cordis.patch.yml",
-    "README.md"
+    "README.md",
+    "README.zh.md"
   ],
   "scripts": {
     "verify": "node scripts/verify.mjs"
