@@ -12,6 +12,11 @@ DSH 输入框工具行里的一个额度圆环，就在模型选择器的左侧�
 
 所选来源与窗口都会持久化在 `localStorage`。
 
+## 截图
+
+![额度卡片](assets/screenshot-1-card.png)
+![来源选择](assets/screenshot-2-picker.png)
+
 ## 安装
 
 从 DSH 插件市场安装（分类 **Usage & Billing**），或在终端里直接装：

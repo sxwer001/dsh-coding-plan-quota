@@ -15,6 +15,11 @@ windows or account balances of your coding plans and shows **one source at a tim
 
 The chosen source and window persist in `localStorage`.
 
+## Screenshots
+
+![The quota card](assets/screenshot-1-card.png)
+![The source picker](assets/screenshot-2-picker.png)
+
 ## Install
 
 From the DSH plugin market (category **Usage & Billing**), or:
