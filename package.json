@@ -1,6 +1,6 @@
 {
   "name": "dsh-coding-plan-quota",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "Coding-plan quota ring next to the DSH model selector. Reads the quota windows or balances of every configured coding plan (OpenCode Go, GLM, Kimi, MiniMax, Claude, Codex, Gemini, Copilot and more), cycles 5-hour/weekly/monthly on click, colours the ring by urgency, and lets the hover card switch the displayed source.",
   "license": "MIT",
