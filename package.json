@@ -41,7 +41,7 @@
     "cordis.patch.yml",
     "screenshots.json",
     "README.md",
-    "README.zh.md"
+    "README.en.md"
   ],
   "scripts": {
     "verify": "node scripts/verify.mjs"
