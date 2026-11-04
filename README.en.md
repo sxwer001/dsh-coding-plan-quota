@@ -2,6 +2,8 @@
 
 # dsh-coding-plan-quota
 
+Supports DSH **0.2.0-rc.2 and 0.2.1-rc.5** on Node.js ≥22.19.0. Version 0.2.3 declares the verified hosts and preserves the GLM percentage fix from 0.2.2. Windows checks cover native installation, a simulated quota endpoint, the ring/card and live disable/re-enable. On 2026-11-04, the installed rc.5 executable and 0.2.3 package successfully read real OpenCode Go usage through the native credential service: three percentages/reset times, the native HTTP route, cache reuse, POST 405 and cross-origin 403 all passed. Other providers have no current-release live endpoint acceptance.
+
 A quota ring in the DSH composer tool row, immediately left of the model selector. It reads the usage
 windows or account balances of your coding plans and shows **one source at a time**.
 

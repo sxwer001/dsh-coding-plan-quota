@@ -1,6 +1,7 @@
 {
   "name": "dsh-coding-plan-quota",
-  "version": "0.2.2",
+  "version": "0.2.3",
+  "engines": { "node": ">=22.19.0", "dsh": "0.2.0-rc.2 || 0.2.1-rc.5" },
   "type": "module",
   "description": "Coding-plan quota ring next to the DSH model selector. Reads the quota windows or balances of every configured coding plan (OpenCode Go, GLM, Kimi, MiniMax, Claude, Codex, Gemini, Copilot and more), cycles 5-hour/weekly/monthly on click, colours the ring by urgency, and lets the hover card switch the displayed source.",
   "license": "MIT",
@@ -41,7 +42,8 @@
     "cordis.patch.yml",
     "screenshots.json",
     "README.md",
-    "README.en.md"
+    "README.en.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "test": "node --test scripts/*.test.mjs",
