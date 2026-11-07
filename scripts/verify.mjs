@@ -2,6 +2,7 @@
  * End-to-end verification for dsh-coding-plan-quota.
  *
  *   node scripts/verify.mjs        (or: pnpm verify)
+ *   node scripts/verify.mjs --offline  (no credential or live-host access)
  *
  * Covers, in order:
  *   1. the provider registry,
@@ -39,6 +40,7 @@ import {
 const HERE = dirname(fileURLToPath(import.meta.url));
 const BASE = process.env.DSH_WEB_URL || "http://127.0.0.1:19387";
 const ROUTE = `${BASE}${ROUTE_PATH}`;
+const offline = process.argv.includes("--offline");
 
 let pass = 0;
 let fail = 0;
@@ -249,7 +251,7 @@ section("config merge");
 /* ──────────────────────────────────────────── 6. live upstream + bad key */
 
 section("live OpenCode Go (real credential, real network)");
-{
+if (!offline) {
 	const provider = PROVIDERS.find((p) => p.id === "opencode-go");
 	const live = await fetchProvider({}, provider, normaliseConfig({}));
 	if (live.error === "fetch-failed" || live.error === "timeout") {
@@ -266,7 +268,7 @@ section("live OpenCode Go (real credential, real network)");
 		}
 	}
 }
-{
+if (!offline) {
 	const provider = PROVIDERS.find((p) => p.id === "opencode-go");
 	const settings = normaliseConfig({ providers: { "opencode-go": { apiKey: "oc_sk_deliberately_invalid_probe_key" } } });
 	const bad = await fetchProvider({}, provider, settings);
@@ -282,13 +284,15 @@ section("live OpenCode Go (real credential, real network)");
 section("live host route");
 let body = null;
 let raw = "";
-try {
-	const probe = await fetch(`${ROUTE}?refresh=1`, { headers: { "sec-fetch-site": "same-origin" } });
-	raw = await probe.text();
-	check("HTTP 200", probe.status === 200, `status ${probe.status}`);
-	body = JSON.parse(raw);
-} catch (error) {
-	note(`host not reachable at ${ROUTE} (${(error && error.message) || error}) — skipping route checks`);
+if (!offline) {
+	try {
+		const probe = await fetch(`${ROUTE}?refresh=1`, { headers: { "sec-fetch-site": "same-origin" } });
+		raw = await probe.text();
+		check("HTTP 200", probe.status === 200, `status ${probe.status}`);
+		body = JSON.parse(raw);
+	} catch (error) {
+		note(`host not reachable at ${ROUTE} (${(error && error.message) || error}) — skipping route checks`);
+	}
 }
 
 if (body) {
@@ -331,6 +335,7 @@ if (body) {
 	check("POST refused", (await fetch(ROUTE, { method: "POST" })).status === 405);
 	check("same-origin served", (await fetch(ROUTE, { headers: { origin: BASE } })).status === 200);
 }
+if (offline) note("offline mode: live credentials, vendor requests and running-host probes were not accessed");
 
 /* ────────────────────────────────────────────────── 8. client contract */
 
